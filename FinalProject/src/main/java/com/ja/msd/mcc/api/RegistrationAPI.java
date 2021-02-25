@@ -1,41 +1,72 @@
 package com.ja.msd.mcc.api;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.ja.msd.mcc.domain.Customer;
 import com.ja.msd.mcc.domain.Registration;
+import com.ja.msd.mcc.repository.RegistrationRepository;
 
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("/registrations")
 public class RegistrationAPI {
 
+	@Autowired
+	RegistrationRepository repo;
+	
+	
 	@GetMapping
-	public String getAll() {
-		String response = "[ ";
-		for (int i = 0; i < list.size(); i++) {
-			response += list.get(i).toJSON();
-			if (i + 1 < list.size()) {
-				response += ", ";
-			}
+	public Iterable<Registration> getAll(){
+		return repo.findAll();
+	}
+	
+	@GetMapping("/{registrationId}")
+	public Optional<Registration> getRegistrationById(@PathVariable("registrationId") long id){
+		return repo.findById(id);
+	}
+
+	@PostMapping
+	public ResponseEntity<?> addRegistration(@RequestBody Registration newRegistration, UriComponentsBuilder uri){
+		if (newRegistration.getEventId() != 0 || newRegistration.getEventName()==null || newRegistration.getCustomerId() == 0 || newRegistration.getEventId()== 0) {
+			//Reject
+			return ResponseEntity.badRequest().build();
 		}
-		response += " ]";
+		newRegistration=repo.save(newRegistration);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newRegistration.getEventId()).toUri();
+		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		return response;
 	}
 
-	@GetMapping("/{registrationId}")
-	public String getRegistrationById(@PathVariable("registrationId") long id) {
-		String response = "{}";
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId() == id) {
-				response = list.get(i).toJSON();
-			}
+	@PutMapping("/{registrationId}")
+	public ResponseEntity<?> putRegistration(@RequestBody Registration newRegistration, @PathVariable("RegistrationId") long RegistrationId){
+		if (newRegistration.getEventId() != 0 || newRegistration.getEventName()==null || newRegistration.getCustomerId() == 0 || newRegistration.getEventId()== 0) {
+			return ResponseEntity.badRequest().build();
 		}
-		return response;
+		newRegistration = repo.save(newRegistration);
+		return ResponseEntity.ok().build();
 	}
-}
+	
+	@DeleteMapping("/{registrationId}")
+	public ResponseEntity<?> deleteRegistrationById(@PathVariable("registrationId") long id) {
+		if (repo.existsById(id)) {
+			repo.deleteById(id);
+			return ResponseEntity.accepted().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}	
 }
