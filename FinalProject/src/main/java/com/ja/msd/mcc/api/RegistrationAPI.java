@@ -49,3 +49,4 @@ public class RegistrationAPI {
 		list.add(r3);
 		
 }
+}
