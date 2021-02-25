@@ -47,6 +47,6 @@ public class RegistrationAPI {
 		list.add(r1);
 		list.add(r2);
 		list.add(r3);
-		
+	}	
 }
 }
