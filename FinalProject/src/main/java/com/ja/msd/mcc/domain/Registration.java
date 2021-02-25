@@ -1,18 +1,32 @@
 package com.ja.msd.mcc.domain;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="REGISTRATIONS")
 public class Registration {
 
 	long id;
 	String name;
 	long eventId;
 	String eventName;
+	Timestamp eventDate;
 	
-	public Registration(long id, String name, long eventId, String eventName) {
+	public Registration(long id, String name, long eventId, String eventName, Timestamp eventDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.eventId = eventId;
 		this.eventName = eventName;
+		this.eventDate = eventDate;
 	}
 	
 	public String toJSON() {
@@ -49,5 +63,13 @@ public class Registration {
 
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
+	}
+	
+	public Timestamp getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(Timestamp eventDate) {
+		this.eventDate = eventDate;
 	}
 }
