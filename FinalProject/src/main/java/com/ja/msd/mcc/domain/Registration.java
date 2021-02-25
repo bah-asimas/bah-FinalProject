@@ -14,39 +14,31 @@ import javax.persistence.Table;
 @Table(name="REGISTRATIONS")
 public class Registration {
 
-	long id;
-	String name;
+	long customerId;
 	long eventId;
 	String eventName;
 	Timestamp eventDate;
+	String notes;
 	
-	public Registration(long id, String name, long eventId, String eventName, Timestamp eventDate) {
+	public Registration(long customerId, long eventId, String eventName, Timestamp eventDate, String notes) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.customerId = customerId;
 		this.eventId = eventId;
 		this.eventName = eventName;
 		this.eventDate = eventDate;
+		this.notes = notes;
 	}
 	
 	public String toJSON() {
-		return "{\"id\"" + ":" + id + ", \"name\"" + ": \"" + name + "\", \"eventId\"" + ": \"" + eventId + "\", \"eventName\"" + ": \"" + eventName + "\" }";
-	}
-	
-	public long getId() {
-		return id;
+		return "{\"id\"" + ":" + customerId + ", \"name\"" + ": \"" + eventName + "\", \"eventId\"" + eventId + ": \"" + eventId + "\", \"eventDate\"" + ": \"" + eventDate + "\" }";
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public long getCustomerId() {
+		return customerId;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 
 	public long getEventId() {
@@ -64,7 +56,7 @@ public class Registration {
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
-	
+
 	public Timestamp getEventDate() {
 		return eventDate;
 	}
@@ -72,4 +64,14 @@ public class Registration {
 	public void setEventDate(Timestamp eventDate) {
 		this.eventDate = eventDate;
 	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	
+	
 }

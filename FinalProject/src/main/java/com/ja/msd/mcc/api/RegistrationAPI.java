@@ -37,16 +37,5 @@ public class RegistrationAPI {
 		}
 		return response;
 	}
-
-	ArrayList<Registration> list = new ArrayList<Registration>();
-
-	public RegistrationAPI() {
-		Registration r1 = new Registration(1, "Jessica", 1, "event1");
-		Registration r2 = new Registration(2, "Anthony", 2, "event2");
-		Registration r3 = new Registration(3, "Jessica", 3, "event3");
-		list.add(r1);
-		list.add(r2);
-		list.add(r3);
-	}	
 }
 }
