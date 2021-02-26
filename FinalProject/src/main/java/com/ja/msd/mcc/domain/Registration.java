@@ -14,14 +14,28 @@ import javax.persistence.Table;
 @Table(name="REGISTRATIONS")
 public class Registration {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	long id;
+	
+	@Column(name="CUSTOMERID")
 	long customerId;
+	
+	@Column(name="EVENTID")
 	long eventId;
+	
+	@Column(name="EVENTNAME")
 	String eventName;
+	
+	@Column(name="EVENTDATE")
 	Timestamp eventDate;
+	
+	@Column(name="NOTES")
 	String notes;
 	
-	public Registration(long customerId, long eventId, String eventName, Timestamp eventDate, String notes) {
+	public Registration(long id, long customerId, long eventId, String eventName, Timestamp eventDate, String notes) {
 		super();
+		this.id=id;
 		this.customerId = customerId;
 		this.eventId = eventId;
 		this.eventName = eventName;
@@ -33,6 +47,14 @@ public class Registration {
 		return "{\"id\"" + ":" + customerId + ", \"name\"" + ": \"" + eventName + "\", \"eventId\"" + eventId + ": \"" + eventId + "\", \"eventDate\"" + ": \"" + eventDate + "\" }";
 	}
 
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public long getCustomerId() {
 		return customerId;
 	}

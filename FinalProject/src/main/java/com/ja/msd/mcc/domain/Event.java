@@ -11,9 +11,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name="EVENTS")
 public class Event {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id; 
+	
+	@Column(name="CODE")
 	private String code;
+	
+	@Column(name="TITLE")
 	private String title;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
 		
 	public Event(Long id, String code, String title, String description)

@@ -1,6 +1,5 @@
 package com.ja.msd.mcc.api;
 
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -26,11 +25,8 @@ import com.ja.msd.mcc.repository.CustomersRepository;
 @RequestMapping("/customers")
 public class CustomerAPI {
 
-
 	@Autowired
 	CustomersRepository repo;
-	
-
 
 	@GetMapping
 	public Iterable<Customer> getAll() {
