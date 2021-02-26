@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.ja.msd.mcc.domain.Customer;
 import com.ja.msd.mcc.domain.Registration;
 import com.ja.msd.mcc.repository.RegistrationRepository;
 
