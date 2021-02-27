@@ -30,6 +30,7 @@ public class CustomerAPI {
 
 	@GetMapping
 	public Iterable<Customer> getAll() {
+		System.out.println(repo.findAll());
 		//  Workshop:  Write an implementation that replies with all customers.
 		//  Your implementation should be no more than a few lines, at most, and make use of the 'repo' object
 		return repo.findAll();   

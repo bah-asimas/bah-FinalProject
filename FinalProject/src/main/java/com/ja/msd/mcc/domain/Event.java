@@ -25,6 +25,9 @@ public class Event {
 	@Column(name="DESCRIPTION")
 	private String description;
 		
+	public Event() {
+		// TODO Auto-generated constructor stub
+	}
 	public Event(Long id, String code, String title, String description)
 	{
 		super();

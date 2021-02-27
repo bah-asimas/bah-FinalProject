@@ -59,7 +59,7 @@ public class EventAPI {
 			@PathVariable("eventId") long eventId) 
 	{
 		//  Workshop:  Implement a method to update an entitye in response to a PUT message.
-		if (newEvent.getId()!=0 || newEvent.getTitle() == null || newEvent.getCode() == null 
+		if (newEvent.getId()==0 || newEvent.getTitle() == null || newEvent.getCode() == null 
 				|| newEvent.getId() == null)
 			return ResponseEntity.badRequest().build();
 		

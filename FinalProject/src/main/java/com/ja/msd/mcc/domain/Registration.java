@@ -1,6 +1,5 @@
 package com.ja.msd.mcc.domain;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,32 +18,31 @@ public class Registration {
 	long id;
 	
 	@Column(name="CUSTOMERID")
-	long customerId;
+	String customerId;
 	
 	@Column(name="EVENTID")
-	long eventId;
-	
-	@Column(name="EVENTNAME")
-	String eventName;
+	String eventId;
 	
 	@Column(name="EVENTDATE")
-	Timestamp eventDate;
+	Date eventDate;
 	
 	@Column(name="NOTES")
 	String notes;
 	
-	public Registration(long id, long customerId, long eventId, String eventName, Timestamp eventDate, String notes) {
+	public Registration() {
+		// TODO Auto-generated constructor stub
+	}
+	public Registration(long id, String customerId, String eventId, Date eventDate, String notes) {
 		super();
 		this.id=id;
 		this.customerId = customerId;
 		this.eventId = eventId;
-		this.eventName = eventName;
 		this.eventDate = eventDate;
 		this.notes = notes;
 	}
 	
 	public String toJSON() {
-		return "{\"id\"" + ":" + customerId + ", \"name\"" + ": \"" + eventName + "\", \"eventId\"" + eventId + ": \"" + eventId + "\", \"eventDate\"" + ": \"" + eventDate + "\" }";
+		return "{\"id\"" + ":" + customerId + ", \"name\"" + ": \""+ "\", \"eventId\"" + eventId + ": \"" + eventId + "\", \"eventDate\"" + ": \"" + eventDate + "\" }";
 	}
 
 	public long getId() {
@@ -55,35 +53,27 @@ public class Registration {
 		this.id = id;
 	}
 	
-	public long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
-	public long getEventId() {
+	public String getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(long eventId) {
+	public void setEventId(String eventId) {
 		this.eventId = eventId;
 	}
 
-	public String getEventName() {
-		return eventName;
-	}
-
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
-	}
-
-	public Timestamp getEventDate() {
+	public Date getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(Timestamp eventDate) {
+	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
 

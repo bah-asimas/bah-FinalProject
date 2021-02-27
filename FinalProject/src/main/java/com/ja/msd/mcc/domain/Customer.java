@@ -18,13 +18,15 @@ public class Customer {
 	@Column(name="NAME")
 	String name;
 	
-	@Column(name="PASSWORD")
+	//@Column(name="PASSWORD")
 	String password;
 	
-	@Column(name="EMAIL")
+	//@Column(name="EMAIL")
 	String email;
 
-	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
 	public Customer(long id, String name, String password, String email) {
 		super();
 		this.id = id;

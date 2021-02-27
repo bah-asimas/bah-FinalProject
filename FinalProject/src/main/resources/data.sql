@@ -6,11 +6,11 @@ insert into EVENTS (CODE, TITLE, DESCRIPTION ) VALUES ('CNF001', 'All-Java Confe
 insert into EVENTS (CODE, TITLE, DESCRIPTION ) VALUES ('WKS002', 'Spring Boot Workshop', 'Hands-on Spring Boot Workshop' );
 insert into EVENTS (CODE, TITLE, DESCRIPTION ) VALUES ('TRN003', 'Angular Training Course', 'Five day introductory training in Angular' );
 
-insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTNAME, EVENTDATE, NOTES ) 
-values ( 1, 1, 'EVENT1','2019-01-15 00:00:00.0', 'please email me the event details' );
+insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTDATE, NOTES ) 
+values ( 1, 1, '2021-01-15 00:00:00.0', 'please email me the event details' );
 
-insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTNAME, EVENTDATE, NOTES ) 
-values ( 1, 2, 'EVENT2', '2019-01-17 00:00:00.0', 'looking for info on local hotels' );
+insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTDATE, NOTES ) 
+values ( 1, 2, '2021-01-17 00:00:00.0', 'looking for info on local hotels' );
 
-insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTNAME, EVENTDATE, NOTES )
-values ( 1, 3, 'EVENT3','2019-01-13 00:00:00.0', 'na' );
+insert into REGISTRATIONS (CUSTOMERID, EVENTID, EVENTDATE, NOTES )
+values ( 1, 3,'2021-01-13 00:00:00.0', 'na' );
